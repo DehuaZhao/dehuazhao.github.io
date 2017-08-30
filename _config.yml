@@ -1,3 +1,11 @@
 theme: jekyll-theme-minimal
 title: ZHAO DEHUA
 description: If not later, when?
+
+footer-links:
+  email: test@test.com
+  facebook:
+  github: DehuaZhao
+  linkedin:
+  twitter:
+  stackoverflow:
