@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+</head>
+<body>
+<h2 id="getting-started-with-windows-powershell">Getting Started with Windows PowerShell</h2>
+<p>7/28/2016</p>
+<p>This article helps you gettting started with Windows PowerShell if you found it acting werid. You probably were missing some steps.</p>
+<h2 id="powershell-website">PowerShell website</h2>
+<p><a href="https://msdn.microsoft.com/en-us/powershell" class="uri">https://msdn.microsoft.com/en-us/powershell</a></p>
+<h2 id="update-powershell-and-help-files">Update PowerShell and help files</h2>
+<p>check powershell version, you can run</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="va">$psversiontable</span></code></pre></div>
+<p>or</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="va">$host</span></code></pre></div>
+<p>If you are on Windows 7 or 8.1, PowerShell v2.0 is pharpas what you have.</p>
+<p>What you need to do, is download and install latest supported <strong>Windows Management Framework</strong>.</p>
+<p>Visit <a href="https://msdn.microsoft.com/en-us/powershell" class="uri">https://msdn.microsoft.com/en-us/powershell</a> and find <strong>download WMF</strong> button.</p>
+<p>As at the time I write this, it would be WMF5.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="va">$psversiontable</span>
+
+<span class="ex">Name</span>                           Value
+<span class="ex">----</span>                           -----
+<span class="ex">PSVersion</span>                      5.0.10586.117
+<span class="ex">PSCompatibleVersions</span>           {1.0, 2.0, 3.0, 4.0...}
+<span class="ex">BuildVersion</span>                   10.0.10586.117
+<span class="ex">CLRVersion</span>                     4.0.30319.42000
+<span class="ex">WSManStackVersion</span>              3.0
+<span class="ex">PSRemotingProtocolVersion</span>      2.3
+<span class="ex">SerializationVersion</span>           1.1.0.1</code></pre></div>
+<p>And then update help files</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">update-help</span></code></pre></div>
+<p>P.S. If you tried some common command like <code>unlock-file .\example.ps1</code> or <code>wget [url]</code>, and error reported:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">unlock-file</span> : The term <span class="st">&#39;unlock-file&#39;</span> is not recognized as the name of a cmdlet, function, script file, or operable program.</code></pre></div>
+<p>Chances are, you are running an old version.</p>
+<h2 id="enable-script-execution">Enable script execution</h2>
+<p>The default execution policy on Windows PowerShell is <strong>Restricted</strong>.</p>
+<p>Use <strong>Set-ExecutionPolicy</strong> to change the execution policy to <strong>AllSigned</strong> or <strong>RemoteSigned</strong>.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">Set-ExecutionPolicy</span> -ExecutionPolicy AllSigned</code></pre></div>
+<p>Or, you can unblock a script to run it without changing the execution policy:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">unlock-file</span> .\example.ps1
+<span class="ex">.</span>\example.ps1</code></pre></div>
+<h2 id="an-example">An Example</h2>
+<p>Right now, a book series called <em>You Don't Know JS</em> comes to my interest. And it's avaliable free at github. I want to download it's fist serie (containing 3 chapters) to local disk D:\</p>
+<p>You can save the scripts into a *.ps1 file. Or you can type and run these in PS.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">for</span> <span class="kw">(</span><span class="va">$i</span>=<span class="ex">1</span><span class="kw">;</span> <span class="va">$i</span> <span class="ex">-le</span> 3<span class="kw">;</span> <span class="va">$i</span><span class="ex">++</span> <span class="kw">)</span>
+<span class="kw">{</span>
+    <span class="fu">wget</span> https://raw.githubusercontent.com/getify/You-Dont-Know-JS/master/up%20%26%20going/ch<span class="va">$i</span>.md -o D:\YDKJS_I_ch<span class="va">$i</span>.md
+<span class="kw">}</span></code></pre></div>
+<p>Note that this book series is orginally in plain text with <em>markdown</em> syntax marked-up. You might need a markdown reader or someting to read it in good formatting.</p>
+</body>
+</html>
